@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const RightPage = styled.div`
   width: 6.25rem;
@@ -60,7 +60,7 @@ export const RightBottomBox = styled.div`
             margin-top: 0.0625rem;
             color: #b2cfee;
             font-size: 0.2rem;
-            background: linear-gradient(to bottom, #fff, #6176F4);
+            background: linear-gradient(to bottom, #fff, #6176f4);
             color: transparent;
             -webkit-background-clip: text;
             background-clip: text;
@@ -70,6 +70,17 @@ export const RightBottomBox = styled.div`
       .offline-portal-box {
         margin-top: 0.125rem;
       }
+      .earth-img {
+        text-align: center;
+
+        .earth-gif {
+          width: 3rem;
+          height: auto;
+          border-radius: 50%;
+          overflow: hidden;
+        }
+      }
+
     }
   }
 `;

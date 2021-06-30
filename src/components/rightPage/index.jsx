@@ -1,83 +1,97 @@
-import React, { PureComponent } from 'react';
-import { BorderBox13 } from '@jiaminghi/data-view-react';
-import BrowseCategories from './charts/BrowseCategories';
-import UserIdentityCategory from './charts/UserIdentityCategory';
-import OfflinePortal from './charts/OfflinePortal';
-import Feedback from './charts/Feedback';
-import { ModuleTitle } from '../../style/globalStyledSet';
-import { connect } from 'dva';
+import { BorderBox13 } from "@jiaminghi/data-view-react";
+import { connect } from "dva";
+import React, { PureComponent } from "react";
+import { ModuleTitle } from "../../style/globalStyledSet";
+import DepartCycle from "./charts/DepartCycle";
+import BrowseCategories from "./charts/BrowseCategories";
+import Feedback from "./charts/Feedback";
+import OfflinePortal from "./charts/OfflinePortal";
+import UserIdentityCategory from "./charts/UserIdentityCategory";
 import {
+  RightBottomBox,
+  RightCenterBox,
   RightPage,
   RightTopBox,
-  RightCenterBox,
-  RightBottomBox,
-} from './style';
+} from "./style";
 
 class index extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
   }
+  duiringStr = "(近1个月)";
+
   render() {
-    const { offline, browseCategories, userIdentityCategory } = this.props;
+    const { offline, browseCategories, userIdentityCategory, departCycle } =
+      this.props;
     return (
       <RightPage>
         <RightTopBox>
-          <div className='right-top'>
+          <div className="right-top">
             <ModuleTitle>
-              <i className='iconfont'>&#xe7f7;</i>
-              <span>关联数据类别分布</span>
+              <i className="iconfont">&#xe7fd;</i>
+              <span>里程碑历史(子任务延期数)</span>
             </ModuleTitle>
-            <div className='right-top-content'>
-              <BrowseCategories
-                browseCategories={browseCategories}></BrowseCategories>
-              <img
-                alt='地球'
-                className='earth-gif'
-                src={require('../../assets/images/earth-rotate.gif')}
-              />
-            </div>
+            <UserIdentityCategory
+              userIdentityCategory={userIdentityCategory}
+            ></UserIdentityCategory>
           </div>
         </RightTopBox>
 
         <RightCenterBox>
           <ModuleTitle>
-            <i className='iconfont'>&#xe7fd;</i>
-            <span>平均用户类别排布</span>
+            <i className="iconfont">&#xe7f7;</i>
+            <span>未解决Bug Top5</span>
           </ModuleTitle>
-          <UserIdentityCategory
-            userIdentityCategory={userIdentityCategory}></UserIdentityCategory>
+          <div className="right-top-content">
+            {/* <BrowseCategories
+                browseCategories={browseCategories}></BrowseCategories> */}
+
+            <DepartCycle departCycle={departCycle}></DepartCycle>
+            {/* <img
+                alt="地球"
+                className="earth-gif"
+                src={require("../../assets/images/earth-rotate.gif")}
+              /> */}
+          </div>
         </RightCenterBox>
 
         <RightBottomBox>
-          <BorderBox13 className='right-bottom-borderBox13'>
-            <div className='right-bottom'>
+          <BorderBox13 className="right-bottom-borderBox13">
+            <div className="right-bottom">
               <ModuleTitle>
-                <i className='iconfont'>&#xe790;</i>
-                <span>今日线下门户流量</span>
+                <i className="iconfont">&#xe790;</i>
+                <span>项目综合排名</span>
               </ModuleTitle>
               {/* 反馈 */}
-              <div className='feedback-box'>
+              <div className="feedback-box">
                 {offline
                   ? offline.feedback.map((item, index) => {
                       return (
-                        <div className='feedback-box-item' key={index}>
+                        <div className="feedback-box-item" key={index}>
                           <Feedback FeedbackData={item}></Feedback>
-                          <span className='dis-text'>{item.title}</span>
+                          <span className="dis-text">{item.title}</span>
                         </div>
                       );
                     })
-                  : ''}
+                  : ""}
               </div>
               {/* 门店 */}
-              <div className='offline-portal-box'>
+              {/* <div className="offline-portal-box">
                 {offline ? (
                   <OfflinePortal
                     offlinePortalData={offline.offlinePortalData}
                   />
                 ) : (
-                  ''
+                  ""
                 )}
+              </div> */}
+              <div className={'earth-img'}>
+                <img
+                  alt="地球"
+                  className="earth-gif"
+                  src={require("../../assets/images/earth-rotate.gif")}
+                />
               </div>
             </div>
           </BorderBox13>
@@ -87,14 +101,15 @@ class index extends PureComponent {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     browseCategories: state.rightPage.browseCategories,
+    departCycle: state.rightPage.departCycle,
     userIdentityCategory: state.rightPage.userIdentityCategory,
     offline: state.rightPage.offline,
   };
 };
 
-const mapStateToDispatch = dispatch => ({});
+const mapStateToDispatch = (dispatch) => ({});
 
 export default connect(mapStateToProps, mapStateToDispatch)(index);

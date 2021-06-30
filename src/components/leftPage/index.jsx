@@ -11,6 +11,7 @@ class index extends PureComponent {
     super(props);
     this.state = {};
   }
+  duiringStr = "(近1个月)";
   render() {
     const { userSitua, trafficSitua, accessFrequency, peakFlow } = this.props;
     return (
@@ -21,17 +22,17 @@ class index extends PureComponent {
             <div className='left-top'>
               <ModuleTitle>
                 <i className='iconfont'>&#xe78f;</i>
-                <span>今日流量态势</span>
+                <span>迭代燃尽图</span>
               </ModuleTitle>
               <div className='title-dis'>
-                <span>
+                {/* <span>
                   平均接纳次数(小时):
                   <span className='title-dis-keyword'>{accessFrequency}次</span>
                 </span>
                 <span>
                   流量峰值:
                   <span className='title-dis-keyword'>{peakFlow}M</span>
-                </span>
+                </span> */}
               </div>
               {/* 图表 */}
               <TrafficSituation trafficSitua={trafficSitua}></TrafficSituation>
@@ -45,7 +46,7 @@ class index extends PureComponent {
             <div className='left-bottom'>
               <ModuleTitle>
                 <i className='iconfont'>&#xe88e;</i>
-                <span>用户数据状态</span>
+                <span>项目员工综合排行</span>
               </ModuleTitle>
               {/* 图表 */}
               <UserSituation userSitua={userSitua}></UserSituation>

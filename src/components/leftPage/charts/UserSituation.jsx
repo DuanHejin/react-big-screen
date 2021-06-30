@@ -1,6 +1,6 @@
-import React, { PureComponent } from 'react';
-import { userOptions } from './options';
-import { ScrollBoard } from '@jiaminghi/data-view-react';
+import React, { PureComponent } from "react";
+import { userOptions } from "./options";
+import { ScrollBoard } from "@jiaminghi/data-view-react";
 
 class UserSituation extends PureComponent {
   constructor(props) {
@@ -8,19 +8,19 @@ class UserSituation extends PureComponent {
     this.state = {
       config: {
         // 表头背景色
-        headerBGC: '#443dc5',
+        headerBGC: "#443dc5",
         // 奇数行背景色
-        oddRowBGC: '#09184F',
+        oddRowBGC: "#09184F",
         // 偶数行背景色
-        evenRowBGC: '#070C34',
+        evenRowBGC: "#070C34",
         // 行号
         index: true,
         // 行号表头
-        indexHeader: '序号',
+        indexHeader: "序号",
         // 宽度
-        columnWidth: [50, 100, 200],
+        columnWidth: [80, 100, 150, 120],
         // 对其方式
-        align: ['center'],
+        align: ["center"],
         // 表行数
         rowNum: 10,
       },
@@ -40,11 +40,12 @@ class UserSituation extends PureComponent {
           <ScrollBoard
             config={config}
             style={{
-              width: '5.475rem',
-              height: '6.875rem',
-            }}></ScrollBoard>
+              width: "5.475rem",
+              height: "6.875rem",
+            }}
+          ></ScrollBoard>
         ) : (
-          ''
+          ""
         )}
       </div>
     );

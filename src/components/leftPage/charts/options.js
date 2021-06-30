@@ -1,4 +1,4 @@
-import echarts from 'echarts/lib/echarts';
+import echarts from "echarts/lib/echarts";
 
 export const trafficOptions = (params) => ({
   title: {
@@ -6,17 +6,17 @@ export const trafficOptions = (params) => ({
   },
   legend: {
     show: true,
-    top: '5%',
+    top: "5%",
     textStyle: {
-      color: '#c0c9d2',
+      color: "#c0c9d2",
     },
   },
   tooltip: {
-    trigger: 'axis',
+    trigger: "axis",
     axisPointer: {
       lineStyle: {
         color: {
-          type: 'linear',
+          type: "linear",
           x: 0,
           y: 0,
           x2: 0,
@@ -24,15 +24,15 @@ export const trafficOptions = (params) => ({
           colorStops: [
             {
               offset: 0,
-              color: 'rgba(0, 255, 233,0)',
+              color: "rgba(0, 255, 233,0)",
             },
             {
               offset: 0.5,
-              color: 'rgba(255, 255, 255,1)',
+              color: "rgba(255, 255, 255,1)",
             },
             {
               offset: 1,
-              color: 'rgba(0, 255, 233,0)',
+              color: "rgba(0, 255, 233,0)",
             },
           ],
           global: false,
@@ -41,24 +41,27 @@ export const trafficOptions = (params) => ({
     },
   },
   grid: {
-    top: '15%',
-    left: '10%',
-    right: '5%',
-    bottom: '10%',
+    top: "15%",
+    left: "10%",
+    right: "10%",
+    bottom: "10%",
   },
   xAxis: {
-    type: 'category',
+    type: "category",
     axisLine: {
       show: true,
     },
+    axisTick: {
+      show: false,
+    },
     splitArea: {
-      color: '#f00',
+      color: "#f00",
       lineStyle: {
-        color: '#f00',
+        color: "#f00",
       },
     },
     axisLabel: {
-      color: '#BCDCF0',
+      color: "#BCDCF0",
     },
     splitLine: {
       show: false,
@@ -67,38 +70,63 @@ export const trafficOptions = (params) => ({
     data: params.timeList,
   },
 
-  yAxis: {
-    type: 'value',
-    min: 0,
-    splitLine: {
-      show: true,
-      lineStyle: {
-        color: 'rgba(255,255,255,0.1)',
+  yAxis: [
+    {
+      type: "value",
+      name: "小时",
+      min: 0,
+      splitLine: {
+        show: true,
+        lineStyle: {
+          color: "rgba(255,255,255,0.1)",
+        },
+      },
+      axisLine: {
+        show: true,
+      },
+      axisLabel: {
+        show: true,
+        margin: 10,
+        textStyle: {
+          color: "#d1e6eb",
+        },
+      },
+      axisTick: {
+        show: false,
       },
     },
-    axisLine: {
-      show: true,
-    },
-    axisLabel: {
-      show: true,
-      margin: 10,
-      textStyle: {
-        color: '#d1e6eb',
-      },
-    },
-    axisTick: {
-      show: false,
-    },
-  },
+    // {
+    //   type: "value",
+    //   // name: "密度",
+    //   min: 0,
+    //   max: 100,
+    //   splitLine: {
+    //     show: false,
+    //   },
+    //   axisLine: {
+    //     show: true,
+    //   },
+    //   axisLabel: {
+    //     show: true,
+    //     margin: 10,
+    //     textStyle: {
+    //       color: "#d1e6eb",
+    //     },
+    //   },
+    //   axisTick: {
+    //     show: false,
+    //   },
+    // },
+  ],
   series: [
     {
-      name: '出口流量',
-      type: 'line',
-      smooth: true, //是否平滑
+      name: "计划工时",
+      type: "line",
+      smooth: false, //是否平滑
       lineStyle: {
         normal: {
-          color: '#00b3f4',
-          shadowColor: 'rgba(0, 0, 0, .3)',
+          color: "#00b3f4",
+          shadowColor: "rgba(0, 0, 0, .3)",
           shadowBlur: 0,
           shadowOffsetY: 5,
           shadowOffsetX: 5,
@@ -106,16 +134,16 @@ export const trafficOptions = (params) => ({
       },
       label: {
         show: false,
-        position: 'top',
+        position: "top",
         textStyle: {
-          color: '#00b3f4',
+          color: "#00b3f4",
         },
       },
       // 去除点标记
       symbolSize: 0,
       // 鼠标放上去还是要有颜色的
       itemStyle: {
-        color: '#00b3f4',
+        color: "#00b3f4",
       },
       // 设置渐变色
       areaStyle: {
@@ -128,46 +156,73 @@ export const trafficOptions = (params) => ({
             [
               {
                 offset: 0,
-                color: 'rgba(0,179,244,0.3)',
+                color: "rgba(0,179,244,0.3)",
               },
               {
                 offset: 1,
-                color: 'rgba(0,179,244,0)',
+                color: "rgba(0,179,244,0)",
               },
             ],
             false
           ),
-          shadowColor: 'rgba(0,179,244, 0.9)',
+          shadowColor: "rgba(0,179,244, 0.9)",
           shadowBlur: 20,
         },
       },
       data: params.outData,
     },
+    
+    // {
+    //   name: '额度',
+    //   type: 'bar',
+    //   yAxisIndex: '1',
+    //   data: params.thirdData,
+    //   itemStyle: {
+    //     normal: {
+    //       color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+    //         {
+    //           offset: 0,
+    //           color: 'rgba(34,224,214,.8)',
+    //         },
+    //         {
+    //           offset: 0.5,
+    //           color: 'rgba(5,137,186,1)',
+    //         },
+    //         {
+    //           offset: 1,
+    //           color: 'rgba(11,12,31,1)',
+    //         },
+    //       ]),
+    //       barBorderRadius: 7.5,
+    //     },
+    //   },
+    //   barMaxWidth: 15,
+    // },
     {
-      name: '入口流量',
+      name: '实际工时',
       type: 'line',
-      smooth: true, //是否平滑
+      smooth: false, //是否平滑
       // 阴影
       lineStyle: {
         normal: {
-          color: '#00ca95',
-          shadowColor: 'rgba(0, 0, 0, .3)',
-          shadowBlur: 0,
-          shadowOffsetY: 5,
-          shadowOffsetX: 5,
+          color: '#c23532',
+          // shadowColor: 'rgba(0, 0, 0, .3)',
+          // shadowBlur: 0,
+          // shadowOffsetY: 5,
+          // shadowOffsetX: 5,
         },
       },
       label: {
         show: false,
         position: 'top',
         textStyle: {
-          color: '#00ca95',
+          color: '#c23532',
         },
       },
       // 去除点标记
       symbolSize: 0,
       itemStyle: {
-        color: '#00ca95',
+        color: '#c23532',
       },
       // 设置渐变色
       areaStyle: {

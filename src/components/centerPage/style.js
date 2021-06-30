@@ -26,7 +26,7 @@ export const CenterBottom = styled.div`
       position: relative;
       height: 1.5625rem;
       padding: 0 0.125rem;
-      width: 32%;
+      width: 49%;
       border-radius: 5px;
       border: 1px solid #343f4b;
       background-color: rgba(19, 25, 47, 0.8);
@@ -49,6 +49,10 @@ export const CenterBottom = styled.div`
           color: transparent;
           -webkit-background-clip: text;
           background-clip: text;
+        }
+        .span-block {
+          display: block;
+          margin: 5px 0;
         }
         .unit {
           font-size: 0.2rem;
